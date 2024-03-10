@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello Board</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-center">
+            <span class="navbar-brand">Airtribe</span>
+        </div>
+    </nav>
+    <div class="board">
+        <div class="column" id="todo">
+            <h3>
+                <div>
+                    <span class="heading" style="
+                background-color: #ffe53b;
+                background-image: linear-gradient(
+                  147deg,
+                  #ffe53b 0%,
+                  #ff2525 74%
+                );
+              ">Not Started</span
+            >
+            &nbsp;
+            <span id="todo-count" class="count"></span>
+                </div>
+                <div class="menu">
+                    <span class="menu-btn" onclick="toggleMenu('todo')"><span class="menu-btn" onclick="toggleMenu('todo')">
+<svg onclick="removeAllTasks('todo')" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="30px" height="30px"><path d="M6 8v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8H6zM24 4h-6c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1H6C5.4 4 5 4.4 5 5s.4 1 1 1h18c.6 0 1-.4 1-1S24.6 4 24 4z"/></svg></span></span>
+                    <div class="menu-content" id="todo-menu">
+                        <a href="#" onclick="removeAllTasks('todo')">Remove All Tasks</a>
+                    </div>
+                </div>
+            </h3>
+            <div class="tasks" id="todo-tasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <button class="new-task-btn" onclick="openNewTaskModal('todo')">
+          + New
+        </button>
+        </div>
+        <div class="column" id="in-progress">
+            <h3>
+                <div>
+                    <span class="heading" style="
+                background-color: #fad961;
+                background-image: linear-gradient(
+                  90deg,
+                  #fad961 0%,
+                  #f76b1c 100%
+                );
+              ">In Progress</span
+            >&nbsp; <span id="in-progress-count" class="count"></span>
+                </div>
+                <div class="menu">
+                    <span class="menu-btn" onclick="toggleMenu('')">
+<svg onclick="removeAllTasks('in-progress')" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="30px" height="30px"><path d="M6 8v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8H6zM24 4h-6c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1H6C5.4 4 5 4.4 5 5s.4 1 1 1h18c.6 0 1-.4 1-1S24.6 4 24 4z"/></svg></span>
+                    <div class="menu-content" id="in-progress-menu">
+                    </div>
+                </div>
+            </h3>
+            <div class="tasks" id="in-progress-tasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <button class="new-task-btn" onclick="openNewTaskModal('in-progress')">
+          + New
+        </button>
+        </div>
+        <div class="column" id="done">
+            <h3>
+                <div>
+                    <span class="heading" style="
+                background-color: #fee140;
+                background-image: linear-gradient(
+                  90deg,
+                  #fee140 0%,
+                  #fa709a 100%
+                );
+              ">Completed</span
+            >&nbsp; <span id="done-count" class="count"></span>
+                </div>
+                <div class="menu">
+                    <span class="menu-btn" onclick="toggleMenu('done')">
+<svg onclick="removeAllTasks('done')" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="30px" height="30px"><path d="M6 8v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8H6zM24 4h-6c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1H6C5.4 4 5 4.4 5 5s.4 1 1 1h18c.6 0 1-.4 1-1S24.6 4 24 4z"/></svg></span></span>
+                    <div class="menu-content" id="done-menu">
+                    </div>
+                </div>
+            </h3>
+            <div class="tasks" id="done-tasks" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <button class="new-task-btn" onclick="openNewTaskModal('done')">
+          + New
+        </button>
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add a new Task</h2>
+            <div class="inputtask">
+                <input type="text" id="task-title" placeholder="Task Title" /><br />
+                <select id="task-status">
+            <option value="todo">Not Started</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Completed</option></select
+          ><br />
+          <textarea
+            id="task-description"
+            placeholder="Task Description"
+          ></textarea
+          ><br />
+          <button class="btn" onclick="saveTask()">Save</button>
+          <button class="btn" onclick="deleteTask()">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
